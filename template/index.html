@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 
     <head>
-     
-
     </head>
     <body>
-        
-
         <h1>hola</h1>
 
         <ul>
         	<!--ocupamos motor de django para los temnplates-->
-
         	{% for pr in product %}
+            <!-- traemos el nombre del product que esta en views.py de la aplicacion product. Para mostrar datos siempre se ocupan las 2 llaves-->
         		<li>
-        		<!-- traemos el nombre del producto. Para mostrar datos siempre se ocupan las 2 llaves-->
         			{{ pr.name }}
         			{{ pr.description }}
+                    {{ pr.price }}
         		</li>
-        	{% endfor %}
 
+        	{% endfor %}
         </ul>
+        
     </body>
 </html>
