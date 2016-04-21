@@ -11,10 +11,13 @@ class Product(models.Model):
 	
 	#para manejar concurrencias economicas utilizar DecimalField
 	price = models.DecimalField(max_digits=6, decimal_places=2)
+	#atributo de imagen que sera una imagen y probablemente estara vacio
+	image = models.ImageField()
 
 #creamos una funcion reservada para devolver el nombre del objeto.
 #de lo que creaste de ese mismo objeto traer el nombre
 	def __str__(self):
 		return self.name
-
-    
+#
+class Meta:
+	ordering = ('id', )

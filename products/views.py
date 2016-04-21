@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 #importacion para cargar templates de html
-from django.shortcuts import loader
+from django.shortcuts import loader, get_object_or_404
 
 #de ese modelo que necesito traer los productos para mandar los 
 #datos a index.html
@@ -50,3 +50,19 @@ def hola(request):
 
 	#le enviamos el contexto y el request a traves del httpResponse
 	return HttpResponse(template.render(context, request))
+
+def product_detail(request, pk):
+	product = get_object_or_404(Product, pk=pk)
+	template = loader.get_template('product_detail.html')
+	context = {
+		'product': product
+	}
+	return HttpResponse(template.render(context, request))
+
+def new_product(request):
+	template = loader.get_template('new_product.html')
+	form = ProductForm()
+	context = [
+		HttpResponse(template.render(context, request))
+
+	]

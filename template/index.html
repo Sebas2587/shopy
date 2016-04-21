@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
     <head>
+    {% load staticfiles%}
+
+    <style type="text/css" href="{% static 'css/base.css' %}"></style>
     </head>
     <body>
         <h1>hola</h1>
@@ -10,9 +13,13 @@
         	{% for pr in product %}
             <!-- traemos el nombre del product que esta en views.py de la aplicacion product. Para mostrar datos siempre se ocupan las 2 llaves-->
         		<li>
-        			{{ pr.name }}
+                <a href="{% url 'products.views.product_detail' pk=pr.pk %}">{{ pr.name }}</a>
+        			
         			{{ pr.description }}
                     {{ pr.price }}
+                    <img src="{{pr.image.url}}" alt="">
+                    
+
         		</li>
 
         	{% endfor %}
